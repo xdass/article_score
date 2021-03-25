@@ -1,5 +1,7 @@
-import pymorphy2
 import string
+
+import pymorphy2
+import pytest
 
 
 def _clean_word(word):
