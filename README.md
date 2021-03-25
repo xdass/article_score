@@ -40,24 +40,24 @@ http://127.0.0.1:8080/?urls=http://inosmi.ru/politic/20210314/249326677.html,htt
 ## Результат
 ```json
 {
-  urls: [
+  "urls": [
       {
-      status: "OK",
-      url: "https://inosmi.ru/politic/20210311/249309407.html",
-      rating: 0.29,
-      words_count: 698
+      "status": "OK",
+      "url": "https://inosmi.ru/politic/20210311/249309407.html",
+      "rating": 0.29,
+      "words_count": 698
       },
       {
-      status: "PARSING_ERROR",
-      url: "https://ria.ru/20210314/zolotarev-1601149637.html",
-      rating: null,
-      words_count: null
+      "status": "PARSING_ERROR",
+      "url": "https://ria.ru/20210314/zolotarev-1601149637.html",
+      "rating": null,
+      "words_count": null
       },
       {
-      status: "OK",
-      url: "http://inosmi.ru/politic/20210314/249326677.html",
-      rating: 0.41,
-      words_count: 1220
+      "status": "OK",
+      "url": "http://inosmi.ru/politic/20210314/249326677.html",
+      "rating": 0.41,
+      "words_count": 1220
       }
   ]
 }
