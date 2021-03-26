@@ -52,7 +52,7 @@ async def fetch(session, url):
 
 async def process_article(session, morph, charged_words, url, results, max_timeout=ASYNC_TIMEOUT):
     """Анализ статьи на 'желтушность."""
-    async with process_timer():
+    async with measure_time():
         score = None
         words_count = None
         try:
@@ -61,7 +61,7 @@ async def process_article(session, morph, charged_words, url, results, max_timeo
             status = ProcessingStatus.OK
             article = inosmi_ru.sanitize(html)
             async with timeout(max_timeout):
-                words = split_by_words(morph, article)
+                words = await split_by_words(morph, article)
                 score = calculate_jaundice_rate(words, charged_words)
             words_count = len(words)
         except (ClientError, InvalidURL):
