@@ -31,7 +31,7 @@ class ProcessingStatus(Enum):
 
 @asynccontextmanager
 async def process_timer():
-    """Контекстный менеджер для замера времени анализа статьи"""
+    """Контекстный менеджер для замера времени анализа статьи."""
     start_time = monotonic()
     try:
         yield
@@ -41,21 +41,21 @@ async def process_timer():
 
 
 def load_dict(path_to_dict):
-    """Загрузка словаря 'заряженных' слов"""
+    """Загрузка словаря 'заряженных' слов."""
     with open(path_to_dict, encoding='utf8') as fh:
         words = fh.read().splitlines()
     return words
 
 
 async def fetch(session, url):
-    """Загрузка статьи"""
+    """Загрузка статьи."""
     async with session.get(url) as response:
         response.raise_for_status()
         return await response.text()
 
 
 async def process_article(session, morph, charged_words, url, results, max_timeout=ASYNC_TIMEOUT):
-    """Анализ статьи на 'желтушность'"""
+    """Анализ статьи на 'желтушность."""
     async with process_timer():
         score = None
         words_count = None

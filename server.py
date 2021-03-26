@@ -8,7 +8,7 @@ from constants import MAX_URLS
 
 
 async def collect(urls, morph, charged_words):
-    """Анализ списка статей"""
+    """Анализ списка статей."""
     results = []
     async with aiohttp.ClientSession() as session:
         async with create_task_group() as tg:
@@ -18,7 +18,7 @@ async def collect(urls, morph, charged_words):
 
 
 async def handle(request, morph, charged_words, max_articles):
-    """Обработчик http запроса"""
+    """Обработчик http запроса."""
     query_params = dict(request.query)
     if not query_params:
         return web.json_response({'error': 'url parameter not provided'})
