@@ -66,7 +66,6 @@ async def process_article(session, morph, charged_words, url, results, max_timeo
             words_count = len(words)
         except (ClientError, InvalidURL):
             status = ProcessingStatus.FETCH_ERROR
-            url = 'Url not exist'
         except exceptions.ArticleNotFound:
             status = ProcessingStatus.PARSING_ERROR
         except asyncio.exceptions.TimeoutError:
