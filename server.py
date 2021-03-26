@@ -1,3 +1,5 @@
+import logging
+
 from aiohttp import web
 import aiohttp
 import pymorphy2
@@ -5,6 +7,9 @@ from anyio import create_task_group
 
 from article import process_article, load_dict
 from constants import MAX_URLS
+
+
+logger = logging.getLogger('basic_logger')
 
 
 async def collect(urls, morph, charged_words):
@@ -21,7 +26,7 @@ async def handle(request, morph, charged_words, max_articles):
     """Обработчик http запроса."""
     query_params = dict(request.query)
     if not query_params:
-        return web.json_response({'error': 'url parameter not provided'})
+        return web.json_response({'error': 'url parameter not provided'}, status=400)
     urls = query_params['urls'].split(',')
     if len(urls) > max_articles:
         return web.json_response({"error": "too many urls in request, should be 10 or less"}, status=400)
@@ -30,6 +35,8 @@ async def handle(request, morph, charged_words, max_articles):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.ERROR)
+    logger.setLevel(logging.INFO)
     morph = pymorphy2.MorphAnalyzer()
     charged_words = load_dict('charged_dict/negative_words.txt')
     app = web.Application()

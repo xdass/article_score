@@ -16,10 +16,6 @@ from constants import ASYNC_TIMEOUT
 
 
 logger = logging.getLogger('basic_logger')
-logger.setLevel(logging.INFO)
-ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
-logger.addHandler(ch)
 
 
 class ProcessingStatus(Enum):
