@@ -26,7 +26,7 @@ class ProcessingStatus(Enum):
 
 
 @asynccontextmanager
-async def process_timer():
+async def measure_time():
     """Контекстный менеджер для замера времени анализа статьи."""
     start_time = monotonic()
     try:
